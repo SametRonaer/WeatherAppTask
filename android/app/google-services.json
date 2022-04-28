@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "798851647217",
+    "project_id": "stepfront-task",
+    "storage_bucket": "stepfront-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798851647217:android:e2b5b021555f3ad0478b50",
+        "android_client_info": {
+          "package_name": "com.example.step_front_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798851647217-ecd9qd2jb95eqon1p73e0jura2diee8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAZPJMl4XQGW5wX8uWADGmliHgeItgQ9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798851647217-ecd9qd2jb95eqon1p73e0jura2diee8o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
