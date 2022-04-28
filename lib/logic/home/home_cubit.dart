@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +14,9 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   LocationData? _userLocation;
+  WeatherModel? _weather;
+  WeatherModel? get weather => _weather;
+
   Future<void> setOriginalUserLocation() async {
     bool serviceEnabled;
     PermissionStatus permissionGranted;
@@ -49,7 +53,8 @@ class HomeCubit extends Cubit<HomeState> {
       "appid": kWeatherApiKey,
       "units": "metric"
     });
-    WeatherModel weather = WeatherModel.fromMap(wearherData);
-    log(weather.main!.temp.toString());
+    _weather = WeatherModel.fromMap(wearherData);
   }
+
+  Future<void> getCities() async {}
 }

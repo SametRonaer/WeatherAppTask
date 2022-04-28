@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:step_front_task/helpers/app_router.dart';
 import 'package:step_front_task/logic/auth/auth_cubit.dart';
+import 'package:step_front_task/logic/city/location_cubit.dart';
 import 'package:step_front_task/logic/home/home_cubit.dart';
+import 'package:step_front_task/screens/home_screen.dart';
 import 'package:step_front_task/screens/launch_screen.dart';
 import 'package:step_front_task/screens/login_screen.dart';
 import 'package:step_front_task/screens/signup_screen.dart';
@@ -29,10 +31,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit(),
         ),
+        BlocProvider(
+          create: (context) => LocationCubit(),
+        ),
       ],
       child: GetMaterialApp(
         onGenerateRoute: _appRouter.onGenerateRoute,
-        initialRoute: LaunchScreen.routeName,
+        initialRoute: HomeScreen.routeName,
       ),
     );
   }
