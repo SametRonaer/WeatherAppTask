@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                 backgroundColor: Colors.blue,
                 floatingActionButton: FloatingActionButton(
                     backgroundColor: Colors.blue.shade200,
-                    child: Icon(Icons.map),
+                    child: const Icon(Icons.map),
                     onPressed: () async =>
                         await Get.toNamed(CitySelectionScreen.routeName)),
                 body: state is HomeLoading
