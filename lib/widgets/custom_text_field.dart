@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({Key? key, required this.controller}) : super(key: key);
+  CustomTextField({Key? key, required this.controller, this.isPassword = false})
+      : super(key: key);
+  bool isPassword;
 
   TextEditingController controller;
 
@@ -16,7 +18,7 @@ class CustomTextField extends StatelessWidget {
             height: 40,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.white38,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.grey.shade700)),
             padding: const EdgeInsets.symmetric(vertical: 5),
@@ -24,6 +26,7 @@ class CustomTextField extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 2),
             child: TextFormField(
+                obscureText: isPassword,
                 controller: controller,
                 decoration: InputDecoration(
                     hintStyle:

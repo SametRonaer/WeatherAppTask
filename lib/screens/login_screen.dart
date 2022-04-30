@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:step_front_task/logic/auth/auth_cubit.dart';
+import 'package:step_front_task/widgets/app_button.dart';
 import 'package:step_front_task/widgets/custom_text_field.dart';
 
 import '../logic/home/home_cubit.dart';
@@ -18,19 +20,47 @@ class LoginScreen extends StatelessWidget {
         return Scaffold(
           body: state is AuthLoading
               ? Center(child: CircularProgressIndicator())
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomTextField(controller: _emailController),
-                    CustomTextField(controller: _passwordController),
-                    ElevatedButton(
-                        onPressed: () {
-                          context.read<AuthCubit>().Login(
-                              _emailController.text, _passwordController.text);
-                          context.read<HomeCubit>().setOriginalUserLocation();
-                        },
-                        child: Text("Login")),
-                  ],
+              : Container(
+                  decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Colors.white, Colors.blue])),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Text("Email",
+                            style: GoogleFonts.lobster(
+                                fontSize: 22, color: Colors.black54)),
+                      ),
+                      CustomTextField(controller: _emailController),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Text("Password",
+                            style: GoogleFonts.lobster(
+                                fontSize: 22, color: Colors.black54)),
+                      ),
+                      CustomTextField(
+                        controller: _passwordController,
+                        isPassword: true,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: AppButton(
+                          label: "Login",
+                          buttonFunction: () {
+                            context.read<AuthCubit>().login(
+                                _emailController.text,
+                                _passwordController.text);
+                            context.read<HomeCubit>().setOriginalUserLocation();
+                          },
+                        ),
+                      )
+                    ],
+                  ),
                 ),
         );
       },

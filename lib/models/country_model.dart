@@ -1,47 +1,49 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
+
 class CountryModel {
-  String name;
+  String country;
   String iso2;
-  dynamic long;
-  dynamic lat;
+  String iso3;
+  List<dynamic> cities;
   CountryModel({
-    required this.name,
+    required this.country,
     required this.iso2,
-    required this.long,
-    required this.lat,
+    required this.iso3,
+    required this.cities,
   });
 
   CountryModel copyWith({
-    String? name,
+    String? country,
     String? iso2,
-    dynamic? long,
-    dynamic? lat,
+    String? iso3,
+    List<String>? cities,
   }) {
     return CountryModel(
-      name: name ?? this.name,
+      country: country ?? this.country,
       iso2: iso2 ?? this.iso2,
-      long: long ?? this.long,
-      lat: lat ?? this.lat,
+      iso3: iso3 ?? this.iso3,
+      cities: cities ?? this.cities,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
+      'country': country,
       'iso2': iso2,
-      'long': long,
-      'lat': lat,
+      'iso3': iso3,
+      'cities': cities,
     };
   }
 
   factory CountryModel.fromMap(Map<String, dynamic> map) {
     return CountryModel(
-      name: map['name'] as String,
+      country: map['country'] as String,
       iso2: map['iso2'] as String,
-      long: map['long'] as dynamic,
-      lat: map['lat'] as dynamic,
+      iso3: map['iso3'] as String,
+      cities: List<String>.from((map['cities'] as List<dynamic>)),
     );
   }
 
@@ -52,22 +54,23 @@ class CountryModel {
 
   @override
   String toString() {
-    return 'CountryModel(name: $name, iso2: $iso2, long: $long, lat: $lat)';
+    return 'CountryModel(country: $country, iso2: $iso2, iso3: $iso3, cities: $cities)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
+    final listEquals = const DeepCollectionEquality().equals;
 
     return other is CountryModel &&
-        other.name == name &&
+        other.country == country &&
         other.iso2 == iso2 &&
-        other.long == long &&
-        other.lat == lat;
+        other.iso3 == iso3 &&
+        listEquals(other.cities, cities);
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^ iso2.hashCode ^ long.hashCode ^ lat.hashCode;
+    return country.hashCode ^ iso2.hashCode ^ iso3.hashCode ^ cities.hashCode;
   }
 }

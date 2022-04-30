@@ -28,7 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> Login(String email, String password) async {
+  Future<void> login(String email, String password) async {
     try {
       emit(AuthLoading());
       await FirebaseAuth.instance

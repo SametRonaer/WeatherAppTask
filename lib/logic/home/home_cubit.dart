@@ -17,6 +17,11 @@ class HomeCubit extends Cubit<HomeState> {
   WeatherModel? _weather;
   WeatherModel? get weather => _weather;
 
+  refreshWeather() {
+    print("Here");
+    emit(HomeLoaded());
+  }
+
   Future<void> setOriginalUserLocation() async {
     bool serviceEnabled;
     PermissionStatus permissionGranted;
@@ -40,21 +45,23 @@ class HomeCubit extends Cubit<HomeState> {
       }
     }
     _userLocation = await _location.getLocation();
-    getWeatherConditionOfLocation(_userLocation!);
+    getWeatherConditionOfLocation(
+        _userLocation!.latitude!, _userLocation!.longitude!);
     emit(HomeLoaded());
   }
 
-  Future<void> getWeatherConditionOfLocation(LocationData locationData) async {
+  Future<void> getWeatherConditionOfLocation(double lat, double long) async {
+    emit(HomeLoading());
     String apiUrl = "https://api.openweathermap.org/data/2.5/weather";
-    final wearherData =
-        await NetworkService.sendGetRequest(endPoint: apiUrl, queryParameters: {
-      "lat": locationData.latitude,
-      "lon": locationData.longitude,
-      "appid": kWeatherApiKey,
-      "units": "metric"
-    });
+    final wearherData = await NetworkService.sendGetRequest(
+        endPoint: apiUrl,
+        queryParameters: {
+          "lat": lat,
+          "lon": long,
+          "appid": kWeatherApiKey,
+          "units": "metric"
+        });
     _weather = WeatherModel.fromMap(wearherData);
+    emit(HomeLoaded());
   }
-
-  Future<void> getCities() async {}
 }

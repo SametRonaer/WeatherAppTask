@@ -1,2 +1,2 @@
 String kWeatherApiKey = "c15f73630b7ef15c1cca234d7741806f";
-String kPositionApiKey = "1a091e4c6953cfbc07297918ac62a507";
+String kLocationApiKey = '29753f6aa9mshbfb860d0c4eda56p1bdd9djsn69fd3ace72fa';

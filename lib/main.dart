@@ -6,6 +6,7 @@ import 'package:step_front_task/helpers/app_router.dart';
 import 'package:step_front_task/logic/auth/auth_cubit.dart';
 import 'package:step_front_task/logic/city/location_cubit.dart';
 import 'package:step_front_task/logic/home/home_cubit.dart';
+import 'package:step_front_task/screens/city_selection_screen.dart';
 import 'package:step_front_task/screens/home_screen.dart';
 import 'package:step_front_task/screens/launch_screen.dart';
 import 'package:step_front_task/screens/login_screen.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       ],
       child: GetMaterialApp(
         onGenerateRoute: _appRouter.onGenerateRoute,
-        initialRoute: HomeScreen.routeName,
+        initialRoute: LaunchScreen.routeName,
       ),
     );
   }
