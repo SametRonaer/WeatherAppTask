@@ -11,7 +11,7 @@ import '../logic/city/location_cubit.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   static const routeName = "/home-screen";
-  String? _temperature;
+
   WeatherModel? weather;
 
   @override
@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         weather = context.read<HomeCubit>().weather;
-        if (weather != null) _temperature = weather!.main!.temp.toString();
         return SafeArea(
           child: Container(
             child: Scaffold(
