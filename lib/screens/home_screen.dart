@@ -58,10 +58,12 @@ class HomeScreen extends StatelessWidget {
                                     style: GoogleFonts.lobster(
                                         fontSize: 45, color: Colors.black54),
                                   ),
-                                  Text("Temperature:\n${weather!.main!.temp}",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.lobster(
-                                          fontSize: 45, color: Colors.black54)),
+                                  if (weather != null)
+                                    Text("Temperature:\n${weather!.main!.temp}",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.lobster(
+                                            fontSize: 45,
+                                            color: Colors.black54)),
                                 ],
                               ),
                             ),
